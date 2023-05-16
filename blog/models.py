@@ -6,7 +6,7 @@ from django.utils import timezone
 # Create your models here.
 class PublishedManager(models.Manager): #создание модельных менеджеров
     def get_queryset(self):
-        return super().get_queryset() \
+        return super().get_queryset()\
             .filter(status=Post.Status.PUBLISHED)
 
 
