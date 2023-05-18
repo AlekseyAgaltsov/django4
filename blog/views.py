@@ -80,12 +80,14 @@ def post_comment(request, post_id):
     post = get_object_or_404(Post, id=post_id, \
                                    status=Post.Status.PUBLISHED)
     comment = None
-    # Коментарий был отправлен
+    # A comment was posted
     form = CommentForm(data=request.POST)
     if form.is_valid():
-        # Создать объект класса Comment, не сохраняя его в базе данных
+        # Create a Comment object without saving it to the database
         comment = form.save(commit=False)
-        # Назначить пост коментарию
+        # Assign the post to the comment
+        comment.post = post
+        # Save the comment to the database
         comment.save()
     return render(request, 'blog/post/comment.html',
                            {'post': post,
