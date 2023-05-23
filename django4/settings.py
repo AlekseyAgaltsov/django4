@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-ul$-8g^jezl9_ibz&yp9&!5jd1r@kw$h+%6+^wmj9&q$&_k-i7
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 SITE_ID = 1
 
 # Application definition
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'taggit',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
@@ -79,8 +81,10 @@ WSGI_APPLICATION = 'django4.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blog',
+        'USER': 'blog',
+        'PASSWORD': 'blog',
     }
 }
 
